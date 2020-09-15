@@ -11,6 +11,10 @@ int firstMissingPositive(vector<int> &vec) {
 	int i = 0;
 	while(i<len) {
 		if(vec[i]<=len && vec[i]>0 && vec[i]!=i+1) {
+			if(vec[i]==vec[vec[i]-1]) {
+				i+=1;
+				continue;
+			}
 			int temp = vec[i];
 			vec[i] = vec[vec[i]-1];
 			vec[temp-1] = temp;
@@ -30,7 +34,7 @@ int firstMissingPositive(vector<int> &vec) {
 
 int main()
 {
-	vector<int> vec {7,14,10,2};
+	vector<int> vec {3,-1,1,2,4};
 	cout<<firstMissingPositive(vec)<<endl;
 	
 	return 0;
